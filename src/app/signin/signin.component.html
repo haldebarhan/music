@@ -1,0 +1,28 @@
+<main class="main">
+    <section class="section-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="box-nav-tabs nav-tavs-profile mb-5">
+                        <ul class="nav" role="tablist">
+                            <li><a class="btn btn-border aboutus-icon mb-20 active" routerLink="/register"
+                                    data-bs-toggle="tab" role="tab" aria-controls="tab-my-profile"
+                                    aria-selected="true">Professionnel / Amateur</a></li>
+                            <li><a class="btn btn-border recruitment-icon mb-20" routerLink="/register/amateur"
+                                    data-bs-toggle="tab" role="tab" aria-controls="tab-my-jobs"
+                                    aria-selected="false">Grand Public</a></li>
+                        </ul>
+                        <div class="border-bottom pt-10 pb-10"></div>
+                    </div>
+                </div>
+                <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-50">
+                    <div class="content-single">
+                        <div class="tab-content">
+                            <router-outlet></router-outlet>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
