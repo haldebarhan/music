@@ -13,11 +13,15 @@ export class HomeService {
   getCategories() {
     return this.http.get(this.API_URL)
   }
-  getTypes(){
+  getTypes() {
     return this.http.get(`${this.API_URL}/types`)
   }
 
-  getTools(){
+  getTools() {
     return this.http.get(`${this.API_URL}/tools`)
+  }
+
+  createAd(user_id: string, data: any) {
+    return this.http.post(`${this.API_URL}/user/${user_id}/create`, data)
   }
 }

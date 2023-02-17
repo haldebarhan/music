@@ -8,16 +8,20 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import {HttpClientModule} from "@angular/common/http";
 import { SigninComponent } from './components/signin/signin.component'
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProComponent } from './components/pro/pro.component';
 import { AmateurComponent } from './components/amateur/amateur.component';
 import { SigninModule } from './signin/signin.module';
+import { CreatePostComponent } from './create-post/create-post.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SalleComponent } from './shared/components/salle/salle.component';
+import { MaterielComponent } from './shared/components/materiel/materiel.component';
+import { SalleRepetitionComponent } from './shared/components/salle-repetition/salle-repetition.component';
+import { StudioEnregistrementComponent } from './shared/components/studio-enregistrement/studio-enregistrement.component';
 
-const appRoutes: Routes = [
-  {path: '',component: HomeComponent},
-  {path: 'register', component: SigninComponent},
-]
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,13 +30,19 @@ const appRoutes: Routes = [
     HomeComponent,
     SigninComponent,
     ProComponent,
-    AmateurComponent
+    AmateurComponent,
+    CreatePostComponent,
+    ProfileComponent,
+    SalleComponent,
+    MaterielComponent,
+    SalleRepetitionComponent,
+    StudioEnregistrementComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes),
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
     SigninModule

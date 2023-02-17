@@ -1,0 +1,51 @@
+<div class="row location_vente_instrument" >
+    <div class="col-lg-6">
+        <h4>Details Matériel (s)</h4>
+        <div class="row mt-10">
+            <div class="col-lg-10">
+                <div class="form-group mb-30">
+                    <label class="font-sm color-text-mutted mb-10">Type
+                        *</label>
+                    <select class="form-control tools" multiple>
+                        
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-10">
+        <div class="form-group mb-30">
+            <label class="font-sm color-text-mutted mb-10">Description *</label>
+            <textarea rows="5" class="form-control"
+                placeholder="Ajoutez une description..."></textarea>
+        </div>
+    </div>
+    <div class="col-lg-10 col-md-12">
+        <label class="font-sm color-text-mutted mb-10">Photos *</label>
+        <div class="form-group mb-30">
+            <div class="box-upload row">
+                <div class="col-md-2">
+                    <div class="add-file-upload">
+                        <input class="fileupload" type="file" name="file" multiple
+                            (change)="previewImages($event)">
+                    </div>
+
+                </div>
+                <div class="col-md-10">
+                    <div class="row">
+                        <div class="col-md-4"
+                            *ngFor="let image of imageSources; index as i">
+                            <div class="output">
+                                <div class="image">
+                                    <img [src]="image" alt="image">
+                                    <span (click)="deleteImage(i)"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

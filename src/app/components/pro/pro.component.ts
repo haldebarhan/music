@@ -20,15 +20,14 @@ export class ProComponent implements OnInit {
   user_music_styles: string[] = []
   user_music_tools: string[] = []
   options: string[] = []
+
   profilFrom = new FormGroup({
     nom: new FormControl('', Validators.required),
     prenoms: new FormControl('', Validators.required),
-    email: new FormControl(''),
+    email: new FormControl('', Validators.required),
     contact: new FormControl('', Validators.required),
     metiers: new FormControl(''),
     pays: new FormControl('', Validators.required),
-    ville: new FormControl('', Validators.required),
-    username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
     confirm: new FormControl('', Validators.required),
 
@@ -38,10 +37,8 @@ export class ProComponent implements OnInit {
     prenoms: '',
     email: '',
     contact: '',
-    username: '',
     password: '',
     pays: '',
-    ville: '',
     metiers: [],
     style_musical: [],
     instruments: []

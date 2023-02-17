@@ -46,7 +46,7 @@ function getData(): Array<any> {
     { "id": 410, "alpha2": "kr", "alpha3": "kor", "name": "Corée du Sud" },
     { "id": 408, "alpha2": "kp", "alpha3": "prk", "name": "Corée du Nord" },
     { "id": 188, "alpha2": "cr", "alpha3": "cri", "name": "Costa Rica" },
-    { "id": 384, "alpha2": "ci", "alpha3": "civ", "name": "Côte d'Ivoire" },
+    // { "id": 384, "alpha2": "ci", "alpha3": "civ", "name": "Côte d'Ivoire" },
     { "id": 191, "alpha2": "hr", "alpha3": "hrv", "name": "Croatie" },
     { "id": 192, "alpha2": "cu", "alpha3": "cub", "name": "Cuba" },
     { "id": 208, "alpha2": "dk", "alpha3": "dnk", "name": "Danemark" },

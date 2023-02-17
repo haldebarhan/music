@@ -1,0 +1,96 @@
+.section-box {
+    display: inline-block;
+    width: 100%;
+    overflow: visible;
+}
+
+.panel-white {
+    background-color: #ffffff;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    border: 1px solid #E0E6F7;
+}
+
+.box-padding {
+    padding: 30px;
+}
+
+.bg-postjob {
+    background: url(../../assets/imgs/page/candidates/bg.svg) no-repeat right 20px bottom;
+}
+
+.icon-edu {
+    background: url(../../assets/imgs/page/candidates/edu.svg) no-repeat left center;
+    padding-left: 31px;
+}
+
+.box-upload {
+    border: 2px dashed #B4C0E0;
+    border-radius: 8px;
+    padding: 15px 18px;
+    background-color: #ffffff;
+}
+
+.box-upload .add-file-upload {
+    width: 85px;
+    height: 85px;
+    border: 1px solid #E0E6F6;
+    border-radius: 16px;
+    background: #ffffff url(../../assets/imgs/page/candidates/plus.svg) no-repeat center;
+    margin-right: 15px;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.box-upload .add-file-upload input {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 12;
+    opacity: 0;
+}
+
+.upload__img-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: center;
+    line-height: 24px;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.upload__img-close:after {
+    content: '\2716';
+    font-size: 14px;
+    color: white;
+}
+
+
+.btn.btn-delete {
+    color: #E45959;
+    font-size: 14px;
+    line-height: 14px;
+    text-decoration: underline;
+    padding: 11px 20px 13px 20px;
+}
+
+.btn.btn-brand {
+    border-radius: 4px;
+}
+
+.btn.icon-tick {
+    background-image: url(../../assets/imgs/page/candidates/edit.svg);
+    background-repeat: no-repeat;
+    background-position: 18px 15px;
+    padding-left: 47px;
+}
+
+

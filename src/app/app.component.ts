@@ -11,6 +11,7 @@ declare var PerfectScrollbar: any
     styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+    constructor(private homeService: HomeService){}
     title = 'frontend';
     cats: any = []
     ngOnInit(): void {
@@ -574,4 +575,6 @@ export class AppComponent implements OnInit {
         const ps = new PerfectScrollbar(".mobile-header-wrapper-inner");
 
     }
+
+   
 }
