@@ -81,20 +81,20 @@ export class MaterielComponent implements OnInit {
 
   getAllTools() {
     this.homeService.getTools().subscribe((res) => {
-      this.instruments = res;
-      this.test = jQuery('.tools').selectize({
-        plugins: ['remove_button'],
-        valueField: 'nom',
-        labelField: 'nom',
-        searchField: ['nom'],
-        closeAfterSelect: true,
-        options: this.instruments,
-        onItemAdd: (name: string) => {
-          this.selectedTools.push(name);
-        },
-        onItemRemove: (name: string) => {
-          this.selectedTools = this.selectedTools.filter((w) => w !== name);
-        },
+    this.instruments = res;
+    this.test = jQuery('.tools').selectize({
+      plugins: ['remove_button'],
+      valueField: 'nom',
+      labelField: 'nom',
+      searchField: ['nom'],
+      closeAfterSelect: true,
+      options: this.instruments,
+      onItemAdd: (name: string) => {
+        this.selectedTools.push(name);
+      },
+      onItemRemove: (name: string) => {
+        this.selectedTools = this.selectedTools.filter((w) => w !== name);
+      },
       });
     });
   }

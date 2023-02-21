@@ -1,0 +1,10 @@
+.card-grid-2 .card-grid-2-image-left .right-info .name-job {
+    font-size: 14px;
+    line-height: 26px;
+    color: #05264E;
+    font-weight: bold;
+    display: block;
+  }
+  .card-grid-2 .card-grid-2-image-left .right-info .name-job:hover {
+    color: #3C65F5;
+  }
