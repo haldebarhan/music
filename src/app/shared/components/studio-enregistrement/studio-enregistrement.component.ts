@@ -1,9 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  FormBuilder,
-  Validators,
-} from '@angular/forms';
-import { Studio } from 'src/helpers/Studio.model';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import appendImages from 'src/helpers/appendImages';
 
 @Component({
   selector: 'app-studio-enregistrement',
@@ -12,26 +10,20 @@ import { Studio } from 'src/helpers/Studio.model';
 })
 export class StudioEnregistrementComponent implements OnInit {
   @Output() studioForm = new EventEmitter<object>();
-  constructor(private fb: FormBuilder) { }
+  @Input() events: Observable<void> = new Observable<void>();
+  constructor(private fb: FormBuilder) {}
   imageSources: string[] = [];
-  files: File[] = [];
+  images: any = [];
+  isPosted: boolean = false;
+  image: File | undefined;
+  eventsSubscription: Subscription = new Subscription();
   options: any = [];
   otherValue: Array<any> = [];
   caracteristique = '';
   description = '';
-  studio: Studio = {
-    type: '',
-    ordinateur: '',
-    daw: '',
-    pm: '',
-    ia: '',
-    micro: '',
-    casque: '',
-    filtre: '',
-    es: ''
-  }
-  data: any = {}
+
   form = this.fb.group({
+    titre: ['', Validators.required],
     type: ['', Validators.required],
     ordinateur: ['', Validators.required],
     daw: ['', Validators.required],
@@ -51,14 +43,13 @@ export class StudioEnregistrementComponent implements OnInit {
     this.options = this.getData();
   }
   previewImages(event: any) {
-    const files = event.target.files;
-    this.files.push(event.target.files);
-    for (let i = 0; i < files.length; i++) {
+    this.images = event.target.files;
+    for (let i = 0; i < this.images.length; i++) {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.imageSources.push(e.target.result);
       };
-      reader.readAsDataURL(files[i]);
+      reader.readAsDataURL(this.images[i]);
     }
   }
   deleteImage(index: number) {
@@ -105,36 +96,44 @@ export class StudioEnregistrementComponent implements OnInit {
   }
 
   saveData() {
-    this.setData()
-    this.data = { ...this.studio }
-    if (this.studio.type == 'Professionnel' && this.otherValue.length > 0) {
+    const data = new FormData();
+    this.isPosted = true;
+    this.setData(data);
+    if (data.get('type') == 'Professionnel' && this.otherValue.length > 0) {
       for (let item of this.otherValue) {
-        this.data[item.caracteristique] = item.description
+        data.append(item.caracteristique, item.description);
       }
     }
-    if (this.files) {
-      this.data["fichier"] = this.files
+    if (this.images && this.images.length > 0) {
+      appendImages(this.images, this.image, data);
     }
-    this.studioForm.emit(this.data)
-    this.resetData()
+    this.studioForm.emit(data);
+    this.eventsSubscription = this.events.subscribe((value) => {
+      console.log(value);
+      this.resetData();
+      this.isPosted = false;
+      this.resetData();
+    });
   }
 
-  private setData() {
-    this.studio.type = <string>this.form.value.type
-    this.studio.casque = <string>this.form.value.casque
-    this.studio.ia = <string>this.form.value.ia
-    this.studio.filtre = <string>this.form.value.filtre
-    this.studio.es = <string>this.form.value.es
-    this.studio.pm = <string>this.form.value.pm
-    this.studio.ordinateur = <string>this.form.value.ordinateur
-    this.studio.micro = <string>this.form.value.micro
-    this.studio.daw = <string>this.form.value.daw
+  private setData(data: FormData): void {
+    data.append('type', <string>this.form.value.type);
+    data.append('casque', <string>this.form.value.casque);
+    data.append('ia', <string>this.form.value.ia);
+    data.append('filtre', <string>this.form.value.filtre);
+    data.append('es', <string>this.form.value.es);
+    data.append('pm', <string>this.form.value.pm);
+    data.append('ordinateur', <string>this.form.value.ordinateur);
+    data.append('micro', <string>this.form.value.micro);
+    data.append('daw', <string>this.form.value.daw);
+    data.append('titre', <string>this.form.value.titre);
   }
 
   private resetData() {
-    this.form.reset()
-    this.otherValue = []
-    this.files = []
-    this.imageSources = []
+    this.form.reset();
+    this.otherValue = [];
+    this.images = [];
+    this.imageSources = [];
+    this.eventsSubscription.unsubscribe();
   }
 }

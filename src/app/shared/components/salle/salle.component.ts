@@ -1,5 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Observable, Subscription } from 'rxjs';
+import appendImages from 'src/helpers/appendImages';
 import { SalleSpect } from 'src/helpers/Salle-Spect.model';
 
 @Component({
@@ -8,14 +10,19 @@ import { SalleSpect } from 'src/helpers/Salle-Spect.model';
   styleUrls: ['./salle.component.css'],
 })
 export class SalleComponent implements OnInit {
+  @Output() salleSpecForm = new EventEmitter<object>();
+  @Input() events: Observable<void> = new Observable<void>();
 
-  @Output() salleSpecForm = new EventEmitter<object>()
-  constructor(private fb: FormBuilder) { }
-  ngOnInit(): void {
-  }
+  constructor(private fb: FormBuilder) {}
+  ngOnInit(): void {}
   imageSources: string[] = [];
-  files: File[] = []
+  images: any = [];
+  image: File | undefined;
+  isPosted: boolean = false;
+  eventsSubscription: Subscription = new Subscription();
+  divers: Array<any> = [];
   form = this.fb.group({
+    titre: ['', Validators.required],
     nbPlace: ['', Validators.required],
     scene: ['', Validators.required],
     sono: ['', Validators.required],
@@ -26,62 +33,71 @@ export class SalleComponent implements OnInit {
     projection: ['', Validators.required],
     mobilier: ['', Validators.required],
     accesSalle: ['', Validators.required],
-    divers: ['', Validators.required],
-  })
-  data: any = {}
-  salle: SalleSpect = {
-    nbPlace: '',
-    scene: '',
-    sono: '',
-    loge: '',
-    plateau: '',
-    video: '',
-    sourceSon: '',
-    projection: '',
-    mobilier: '',
-    accesSalle: '',
-    divers: '',
-  }
+  });
+  diversForm = this.fb.group({
+    autre: ['', Validators.required],
+  });
   previewImages(event: any) {
-    console.log(event.target.value)
-    const files = event.target.files;
-    this.files.push(event.target.files)
-    for (let i = 0; i < files.length; i++) {
+    this.images = event.target.files;
+    for (let i = 0; i < this.images.length; i++) {
       const reader = new FileReader();
-      reader.onload = (e: any) => { this.imageSources.push(e.target.result) };
-      reader.readAsDataURL(files[i]);
+      reader.onload = (e: any) => {
+        this.imageSources.push(e.target.result);
+      };
+      reader.readAsDataURL(this.images[i]);
     }
   }
   deleteImage(index: number) {
     this.imageSources.splice(index, 1);
   }
 
-  setData() {
-    this.salle.accesSalle = <string>this.form.value.accesSalle
-    this.salle.nbPlace = <string>this.form.value.nbPlace
-    this.salle.scene = <string>this.form.value.scene
-    this.salle.sono = <string>this.form.value.sono
-    this.salle.loge = <string>this.form.value.loge
-    this.salle.plateau = <string>this.form.value.plateau
-    this.salle.video = <string>this.form.value.video
-    this.salle.sourceSon = <string>this.form.value.sourceSon
-    this.salle.projection = <string>this.form.value.projection
-    this.salle.mobilier = <string>this.form.value.mobilier
-    this.salle.accesSalle = <string>this.form.value.accesSalle
-    this.salle.divers = <string>this.form.value.divers
-    this.data = { ...this.salle }
+  setData(data: FormData): void {
+    data.append('titre', <string>this.form.value.titre);
+    data.append('accesSalle', <string>this.form.value.accesSalle);
+    data.append('nbPlace', <string>this.form.value.nbPlace);
+    data.append('scene', <string>this.form.value.scene);
+    data.append('sono', <string>this.form.value.sono);
+    data.append('loge', <string>this.form.value.loge);
+    data.append('plateau', <string>this.form.value.plateau);
+    data.append('video', <string>this.form.value.video);
+    data.append('sourceSon', <string>this.form.value.sourceSon);
+    data.append('projection', <string>this.form.value.projection);
+    data.append('mobilier', <string>this.form.value.mobilier);
+    if (this.divers && this.divers.length > 0) {
+      for (let item of this.divers) {
+        data.append('divers', <string>item);
+      }
+    }
   }
   saveData() {
-    this.setData()
-    if (this.files) {
-      this.data["fichier"] = this.files
+    const data = new FormData();
+    this.isPosted = true;
+    this.setData(data);
+    if (this.images && this.images.length > 0) {
+      appendImages(this.images, this.image, data);
     }
-    this.salleSpecForm.emit(this.data)
-    this.resetForm()
+    this.salleSpecForm.emit(data);
+    this.eventsSubscription = this.events.subscribe((value) => {
+      console.log(value);
+      this.resetData();
+      this.isPosted = false;
+    });
   }
-  resetForm() {
-    this.form.reset()
-    this.files = []
-    this.imageSources = []
+  resetData() {
+    this.form.reset();
+    this.images = [];
+    this.imageSources = [];
+    this.divers = [];
+    this.eventsSubscription.unsubscribe();
+  }
+  addDiver() {
+    this.divers.push(<string>this.diversForm.value.autre);
+    this.diversForm.reset();
+  }
+
+  deleteDiver(item: object) {
+    const condition = (element: object) => element == item;
+    const index = this.divers.findIndex(condition);
+    this.divers.splice(index, 1);
   }
 }

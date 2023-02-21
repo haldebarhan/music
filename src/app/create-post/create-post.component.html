@@ -40,12 +40,16 @@
                                     </div>
                                 </div>
                                 <app-salle *ngIf="(type_recherche == 'Proposer' && cible== 'LSS') "
-                                    (salleSpecForm)="createAd($event)"></app-salle>
+                                    (salleSpecForm)="createAd($event)"
+                                    [events]="eventSubject.asObservable()"></app-salle>
                                 <app-salle-repetition *ngIf="(type_recherche == 'Proposer' && cible== 'LSR') "
                                     (salleRep)="createAd($event)"
                                     [events]="eventSubject.asObservable()"></app-salle-repetition>
                                 <app-studio-enregistrement *ngIf="(type_recherche == 'Proposer' && cible== 'SE')"
-                                    (studioForm)="createAd($event)"></app-studio-enregistrement>
+                                    (studioForm)="createAd($event)"
+                                    [events]="eventSubject.asObservable()"></app-studio-enregistrement>
+                                <app-materiel *ngIf="(type_recherche == 'Proposer' && cible== 'LVIM') "
+                                    (Instrus)="createAd($event)" [events]="eventSubject.asObservable()"></app-materiel>
                             </div>
                         </div>
                     </div>

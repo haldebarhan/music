@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-} from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Ad } from 'src/helpers/Ad.model';
 import { AuthService } from '../services/auth.service';
@@ -22,10 +20,9 @@ export class CreatePostComponent implements OnInit {
     private fb: FormBuilder,
     private authService: AuthService,
     private homeService: HomeService
-  ) { }
-  eventSubject: Subject<void> = new Subject<void>()
+  ) {}
+  eventSubject: Subject<void> = new Subject<void>();
   imageSources: string[] = [];
-  response: any;
   form = this.fb.group({
     type: [''],
     cible: [''],
@@ -37,7 +34,6 @@ export class CreatePostComponent implements OnInit {
   ngOnInit(): void {
     this.userType = this.authService.userType;
     this.getCategories();
-    this.getAllTools();
     this.search = this.getData();
     this.getMusicTools();
   }
@@ -63,6 +59,7 @@ export class CreatePostComponent implements OnInit {
       { id: 'LSS', nom: 'Location de Salle de Spectacle' },
       { id: 'LSR', nom: 'Location de Salle de Répétition' },
       { id: 'SE', nom: "Studio d'Enregistrement" },
+      { id: 'LVIM', nom: "Location / Vente d'Instruments de Musique" },
       { id: 'A', nom: 'Autres' },
     ];
   }
@@ -89,31 +86,6 @@ export class CreatePostComponent implements OnInit {
       onItemAdd: (name: string) => (this.cible = name),
     });
   }
-  test() {
-    console.log(this.file);
-  }
-
-  getAllTools() {
-    this.homeService.getTools().subscribe((res) => {
-      this.music_tools = res;
-      jQuery('.tools').selectize({
-        plugins: ['remove_button'],
-        valueField: 'nom',
-        labelField: 'nom',
-        searchField: ['nom'],
-        closeAfterSelect: true,
-        options: this.music_tools,
-        onItemAdd: (name: string) => {
-          // this.user_music_tools.push(name)
-          // this.artiste.instruments?.push(name)
-        },
-        onItemRemove: (name: string) => {
-          // this.user_music_tools = this.user_music_tools.filter(word => word !== name)
-          // this.artiste.instruments = this.artiste.instruments?.filter(word => word !== name)
-        },
-      });
-    });
-  }
 
   getMusicTools() {
     jQuery('.tool').selectize({
@@ -129,29 +101,29 @@ export class CreatePostComponent implements OnInit {
     });
   }
   createAd(valeur: any) {
-    const data = <FormData>valeur
-    data.append('titre', 'CECI NEST PAS UN TITRE')
-    data.append('cible', 'CECI EST UNE CIBLE')
-    this.homeService.createAd("1", data).subscribe(res => {
-      this.response = res
-      this.emitToChild(res)
-    })
+    const data = <FormData>valeur;
+    data.append('categorie', this.getTitle(this.cible));
+    this.homeService.createAd('1', data).subscribe((res) => {
+      this.emitToChild(res);
+    });
   }
 
   emitToChild(data: any) {
-    this.eventSubject.next(data)
+    this.eventSubject.next(data);
   }
 
   getTitle(cible: string): string {
     switch (cible) {
       case 'LSS':
-        return 'LOCATION DE SALLE DE SPECTACLE'
+        return 'SALLE DE SPECTACLE';
       case 'LSR':
-        return 'LOCATION DE SALLE DE REPETITION'
+        return 'SALLE DE REPETITION';
       case 'SE':
-        return 'STUDIO D\'ENREGISTREMENT'
+        return "STUDIO D'ENREGISTREMENT";
+      case 'LVIM':
+        return "INSTRUMENTS DE MUSIQUE";
       default:
-        return ''
+        return '';
     }
   }
 }
