@@ -19,6 +19,9 @@ export class HomeService {
   getAllAds() {
     return this.http.get(this.API_URL);
   }
+  getOneAd(id: string){
+    return this.http.get(`${this.API_URL}/ad/${id}`)
+  }
   getTypes() {
     return this.http.get(`${this.API_URL}/types`);
   }

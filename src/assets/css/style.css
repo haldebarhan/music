@@ -1911,8 +1911,8 @@ label {
   line-height: 18px;
 }
 .card-grid-2.grid-bd-16 .card-block-info .card-text-price {
-  font-size: 16px;
-  line-height: 26px;
+  font-size: 10px;
+  line-height: 10px;
 }
 .card-grid-2 .card-grid-2-image {
   position: relative;

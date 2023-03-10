@@ -9,19 +9,19 @@ import { PublicService } from 'src/app/services/public.service';
 })
 export class HomeComponent implements OnInit {
   cats: any = [];
+  filtredAds: any = [];
   ads: any = [];
   constructor(private homeService: HomeService, private ps: PublicService) {}
   ngOnInit(): void {
     this.ps.Allads.subscribe((ads) => {
       this.ads = ads;
-      this.test();
+      this.filtredAds = ads;
+      this.filterAdsByCategory()
     });
   }
 
-  test() {
-    for (let ad of this.ads) {
-      console.log(ad.description);
-      // if (ad.categorie == 'INSTRUMENTS DE MUSIQUE') console.log(ad.description[0].instrument ? ad.description[0].instrument : 't');
-    }
+  filterAdsByCategory(name: string = "INSTRUMENTS DE MUSIQUE"): Array<any> {
+    this.filtredAds = this.ads.filter((ad: any) => ad.categorie == name);
+    return this.filtredAds
   }
 }

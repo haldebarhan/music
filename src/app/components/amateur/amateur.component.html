@@ -8,27 +8,27 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Entrer votre nom" formControlName="nom"
-                                [(ngModel)]="user.nom">
+                            <input class="form-control" type="text" placeholder="Entrer votre nom"
+                                formControlName="nom">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="Entrer vos prenoms"
-                                formControlName="prenoms" [(ngModel)]="user.prenoms">
+                                formControlName="prenoms">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <input class="form-control" type="text" placeholder="(+225) 0101010101"
-                                formControlName="contact" [(ngModel)]="user.contact">
+                                formControlName="contact">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <select class="form-control form-select-sm" aria-label=".form-select-sm example"
-                                formControlName="pays" [(ngModel)]="user.pays" aria-placeholder="Pays">
-                                <option selected value="" disabled>Votre Pays</option>
+                                formControlName="pays" aria-placeholder="Pays">
+                                <option value="Côte d'Ivoire" selected>Côte d'Ivoire</option>
                                 <option *ngFor="let item of country" value="{{item.name}}">{{item.name}}</option>
                             </select>
                         </div>
@@ -36,7 +36,7 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
-                     
+
                     </div>
                     <div class="col-lg-6">
                     </div>
@@ -46,15 +46,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="form-group">
-                            <input class="form-control" type="text" placeholder="Email"
-                                formControlName="email" [(ngModel)]="user.email">
+                            <input class="form-control" type="text" placeholder="Email" formControlName="email">
                         </div>
                     </div>
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label class="font-sm color-text-mutted mb-10">Mot de Passe *</label>
                             <input class="form-control" type="password" placeholder="*********"
-                                formControlName="password" [(ngModel)]="user.password">
+                                formControlName="password">
                         </div>
                     </div>
                     <div class="col-lg-6">

@@ -6,7 +6,7 @@
           <div class="image-compay"><img src="assets/imgs/page/candidates/candidate-profile.png" alt="jobbox"></div>
           <div class="row mt-10">
             <div class="col-lg-8 col-md-12">
-              <h5 class="f-18">Kehi Franck Herve <span class="card-location font-regular ml-20">Côte d'Ivoire</span></h5>
+              <h5 class="f-18">{{user.nom}} {{user.prenoms}}<span class="card-location font-regular ml-20">{{user.pays}}</span></h5>
               <p class="mt-0 font-md color-text-paragraph-2 mb-15">Chanteur</p>
               <div class="mt-10 mb-15"><img src="assets/imgs/template/icons/star.svg" alt="jobbox"><img src="assets/imgs/template/icons/star.svg" alt="jobbox"><img src="assets/imgs/template/icons/star.svg" alt="jobbox"><img src="assets/imgs/template/icons/star.svg" alt="jobbox"><img src="assets/imgs/template/icons/star.svg" alt="jobbox"><span class="font-xs color-text-mutted ml-10">(66)</span><img class="ml-30" src="assets/imgs/page/candidates/verified.png" alt="jobbox"></div>
             </div>
@@ -33,24 +33,22 @@
                   <h4>Infos Personnelles</h4>
                   <div class="row mb-40">
                     <div class="col-lg-5 col-md-6 col-sm-12 mb-30">
-                      <h6 class="color-text-paragraph-2">Programming</h6>
                       <div class="box-progress-bar mt-20">
-                        <p class="font-xs color-text-paragraph-2 mb-10">Nom</p>
-                      <p>KEHI</p>
-                        <p class="font-xs color-text-paragraph-2 mb-10 mt-30">Contact</p>
-                        <p>00 00 00 00 00</p>
-                        <p class="font-xs color-text-paragraph-2 mb-10 mt-30">Metier (s)</p>
+                        <h6 class="color-text-paragraph-2">Nom</h6>
+                      <p>{{user.nom}}</p>
+                      <h6 class="color-text-paragraph-2">Contact</h6>
+                        <p>{{user.contact}}</p>
+                        <h6 class="color-text-paragraph-2">Metier (s)</h6>
                         <p>Musicien</p>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-6 col-sm-12 mb-30">
-                      <h6 class="color-text-paragraph-2">Design</h6>
                       <div class="box-progress-bar mt-20">
-                        <p class="font-xs color-text-paragraph-2 mb-10">Prenoms</p>
-                        <p>FRANCK HERVE WILFRIED</p>
-                        <p class="font-xs color-text-paragraph-2 mb-10 mt-30">Pays</p>
-                       <p>COTE D'IVOIRE</p>
-                       <p class="font-xs color-text-paragraph-2 mb-10 mt-30">Intruments</p>
+                        <h6 class="color-text-paragraph-2">Prenoms</h6>
+                        <p>{{user.prenoms}}</p>
+                        <h6 class="color-text-paragraph-2">Pays</h6>
+                       <p>{{user.pays}}</p>
+                       <h6 class="color-text-paragraph-2">Instruments</h6>
                        <p>Guitare, Piano</p>
                       </div>
                     </div>

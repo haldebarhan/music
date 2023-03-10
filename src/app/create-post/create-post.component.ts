@@ -30,9 +30,9 @@ export class CreatePostComponent implements OnInit {
   });
   cible = '';
   type_recherche = '';
+  user = 'Professionnel'
 
   ngOnInit(): void {
-    this.userType = this.authService.userType;
     this.getCategories();
     this.search = this.getData();
     this.getMusicTools();
@@ -55,13 +55,16 @@ export class CreatePostComponent implements OnInit {
     });
   }
   getData(): Array<any> {
-    return [
+    const options: Array<object> = [
       { id: 'LSS', nom: 'Location de Salle de Spectacle' },
       { id: 'LSR', nom: 'Location de Salle de Répétition' },
       { id: 'SE', nom: "Studio d'Enregistrement" },
       { id: 'LVIM', nom: "Location / Vente d'Instruments de Musique" },
-      { id: 'A', nom: 'Autres' },
     ];
+    if (this.user == 'Professionnel'){
+      options.push({id: 'PS', nom: 'Prestation de Service'})
+    }
+    return options;
   }
   MusicTools(): Array<any> {
     return [
@@ -121,7 +124,7 @@ export class CreatePostComponent implements OnInit {
       case 'SE':
         return "STUDIO D'ENREGISTREMENT";
       case 'LVIM':
-        return "INSTRUMENTS DE MUSIQUE";
+        return 'INSTRUMENTS DE MUSIQUE';
       default:
         return '';
     }

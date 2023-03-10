@@ -16,7 +16,7 @@ export class MaterielComponent implements OnInit {
   instruments: any = [];
   test: any;
   eventsSubscription: Subscription = new Subscription();
-  selectedTools: string[] = [];
+  selectedTools: string = '';
   image: File | undefined;
   @Output() Instrus = new EventEmitter<any>();
   @Input() events: Observable<void> = new Observable<void>();
@@ -31,6 +31,12 @@ export class MaterielComponent implements OnInit {
     prix: ['', Validators.required],
     type: ['', Validators.required],
     description: ['', Validators.required],
+    marque: ['', Validators.required],
+    model: ['', Validators.required],
+    materiau: ['', Validators.required],
+    couleur: ['', Validators.required],
+    poids: ['', Validators.required],
+    dimesions: ['', Validators.required],
   });
   previewImages(event: any) {
     this.images = event.target.files;
@@ -53,9 +59,9 @@ export class MaterielComponent implements OnInit {
     if (this.images && this.images.length > 0) {
       appendImages(this.images, this.image, data);
     }
+    console.log(this.form.value, this.selectedTools);
     this.Instrus.emit(data);
     this.eventsSubscription = this.events.subscribe((value) => {
-      console.log(value);
       this.resetData();
       this.isPosted = false;
     });
@@ -66,35 +72,37 @@ export class MaterielComponent implements OnInit {
     data.append('prix', <string>this.form.value.prix);
     data.append('type', <string>this.form.value.type);
     data.append('titre', <string>this.form.value.titre);
-    for (let item of this.selectedTools) {
-      data.append('instrument', item);
-    }
+    data.append('instrument', this.selectedTools);
+    data.append('marque', <string>this.form.value.marque);
+    data.append('model', <string>this.form.value.model);
+    data.append('materiau', <string>this.form.value.materiau);
+    data.append('couleur', <string>this.form.value.couleur);
+    data.append('poids', <string>this.form.value.poids);
+    data.append('dimensions', <string>this.form.value.dimesions);
   }
   resetData() {
     this.form.reset();
     this.images = [];
     this.imageSources = [];
     this.eventsSubscription.unsubscribe();
-    const control = this.test[0].selectize;
-    control.clear();
   }
 
   getAllTools() {
     this.homeService.getTools().subscribe((res) => {
-    this.instruments = res;
-    this.test = jQuery('.tools').selectize({
-      plugins: ['remove_button'],
-      valueField: 'nom',
-      labelField: 'nom',
-      searchField: ['nom'],
-      closeAfterSelect: true,
-      options: this.instruments,
-      onItemAdd: (name: string) => {
-        this.selectedTools.push(name);
-      },
-      onItemRemove: (name: string) => {
-        this.selectedTools = this.selectedTools.filter((w) => w !== name);
-      },
+      this.instruments = res;
+      jQuery('.tools').selectize({
+        plugins: ['remove_button'],
+        valueField: 'nom',
+        labelField: 'nom',
+        searchField: ['nom'],
+        closeAfterSelect: true,
+        options: this.instruments,
+        onItemAdd: (name: string) => {
+          this.selectedTools = name;
+        },
+        onItemRemove: (name: string) => {
+          this.selectedTools = '';
+        },
       });
     });
   }

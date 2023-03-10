@@ -1,0 +1,250 @@
+<main class="main">
+  <section class="section-box-2">
+    <div class="container">
+      <div class="row mt-10">
+        <div class="col-lg-8 col-md-12">
+          <h3>{{ad.titre}}</h3>
+          <div class="mt-0 mb-15"><span class="card-briefcase">Fulltime</span><span
+              class="card-time">{{renderTime(ad.createdAt)}}</span></div>
+        </div>
+        <div class="col-lg-4 col-md-12 text-lg-end">
+          <div class="btn btn-apply-icon btn-apply btn-apply-big hover-up" data-bs-toggle="modal"
+            data-bs-target="#ModalApplyJobForm">Apply now</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+          <div class="job-overview">
+            <h5 class="border-bottom pb-15 mb-30">Carateristiques de l'Instrument</h5>
+            <div class="row">
+              <div class="col-md-6 d-flex" *ngFor="let item of description">
+                <div class="sidebar-icon-item"><img src="../../../../assets/imgs/page/job-single/industry.svg"
+                    alt="jobBox"></div>
+                <div class="sidebar-text-info ml-10">
+                  <span class="text-description industry-icon mb-10">{{item.cle}}</span><strong class="small-heading">
+                    {{item.valeur}}</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="content-single">
+            <h4>Description</h4>
+            <p>{{adDescription.description}}</p>
+          </div>
+          <div class="single-apply-jobs">
+            <div class="row align-items-center">
+              <div class="col-md-5"><a class="btn btn-default mr-15" href="#">Apply now</a><a class="btn btn-border"
+                  href="#">Save job</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-12 col-sm-12 col-12 pl-40 pl-lg-15 mt-lg-30">
+          <div class="sidebar-border">
+            <div class="sidebar-heading">
+              <div class="avatar-sidebar">
+                <div class="sidebar-info">
+                  <span class="sidebar-company">Images</span>
+                </div>
+              </div>
+            </div>
+            <div class="sidebar-list-job">
+              <div class="container">
+                <div class="row">
+                  <div class="col-lg-6 col-md-7 col-9 cover" *ngFor="let img of images">
+                    <a href="{{img}}" data-lightbox="toolfile" class="d-block">
+                      <img class="img-fluid img-thumbnail" src="{{img}}" alt="">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sidebar-border">
+            <div class="sidebar-heading">
+              <div class="avatar-sidebar">
+                <figure><img alt="jobBox" src="../../../../assets/imgs/page/job-single/avatar.png"></figure>
+                <div class="sidebar-info"><span class="sidebar-company">AliThemes</span><span class="card-location">New
+                    York, US</span><a class="link-underline mt-15" href="#">02 Open Jobs</a></div>
+              </div>
+            </div>
+            <div class="sidebar-list-job">
+              <ul class="ul-disc">
+                <li>205 North Michigan Avenue, Suite 810 Chicago, 60601, USA</li>
+                <li>Phone: (123) 456-7890</li>
+                <li>Email: contact@Evara.com</li>
+              </ul>
+            </div>
+          </div>
+          <div class="sidebar-border">
+            <h6 class="f-18">Similar jobs</h6>
+            <div class="sidebar-list-job">
+              <ul>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-1.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">UI / UX Designer
+                          fulltime</a></h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>3</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$250<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">New York, US</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-2.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">Java Software
+                          Engineer</a>
+                      </h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>5</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$500<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">Tokyo, Japan</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-3.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">Frontend Developer</a>
+                      </h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>8</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$650<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">Hanoi, Vietnam</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-4.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">Cloud Engineer</a></h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>12</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$380<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">Losangl, Au</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-5.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">DevOps Engineer</a></h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>34</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$140<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">Paris, France</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-6.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">Figma design UI/UX</a>
+                      </h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>45</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$290<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">New York, US</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-7.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">Product Manage</a></h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>50</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$650<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">New York, US</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="card-list-4 wow animate__animated animate__fadeIn hover-up">
+                    <div class="image"><a href="job-details.html"><img src="../../../../assets/imgs/brands/brand-8.png"
+                          alt="jobBox"></a></div>
+                    <div class="info-text">
+                      <h5 class="font-md font-bold color-brand-1"><a href="job-details.html">UI / UX Designer</a></h5>
+                      <div class="mt-0"><span class="card-briefcase">Fulltime</span><span
+                          class="card-time"><span>58</span><span> mins ago</span></span></div>
+                      <div class="mt-5">
+                        <div class="row">
+                          <div class="col-6">
+                            <h6 class="card-price">$270<span>/Hour</span></h6>
+                          </div>
+                          <div class="col-6 text-end"><span class="card-briefcase">New York, US</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

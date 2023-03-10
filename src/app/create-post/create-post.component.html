@@ -14,7 +14,6 @@
                                                 *</label>
                                             <select class="form-control" [(ngModel)]="type_recherche">
                                                 <option value="" selected disabled>Choisir</option>
-                                                <option value="Chercher">Je Cherche des Annonces</option>
                                                 <option value="Proposer">Je Propose mes Services</option>
                                             </select>
                                         </div>
@@ -48,7 +47,7 @@
                                 <app-studio-enregistrement *ngIf="(type_recherche == 'Proposer' && cible== 'SE')"
                                     (studioForm)="createAd($event)"
                                     [events]="eventSubject.asObservable()"></app-studio-enregistrement>
-                                <app-materiel *ngIf="(type_recherche == 'Proposer' && cible== 'LVIM') "
+                                <app-materiel *ngIf="(type_recherche == 'Proposer' && cible == 'LVIM')"
                                     (Instrus)="createAd($event)" [events]="eventSubject.asObservable()"></app-materiel>
                             </div>
                         </div>

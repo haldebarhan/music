@@ -1,10 +1,18 @@
-.card-grid-2 .card-grid-2-image-left .right-info .name-job {
-    font-size: 14px;
-    line-height: 26px;
-    color: #05264E;
-    font-weight: bold;
-    display: block;
-  }
-  .card-grid-2 .card-grid-2-image-left .right-info .name-job:hover {
-    color: #3C65F5;
-  }
+.swiper-group-5 .swiper-pagination {
+  margin-top: 15px;
+  position: relative;
+}
+.swiper-group-5 .swiper-pagination .swiper-pagination-bullet {
+  background-color: #ffffff;
+  width: 10px;
+  height: 10px;
+  margin: 0 4px;
+  opacity: 0.5;
+}
+.swiper-group-5 .swiper-pagination .swiper-pagination-bullet-active, .swiper-group-5 .swiper-pagination .swiper-pagination-bullet-active:hover {
+  background-color: #ffffff;
+  width: 12px;
+  height: 12px;
+  margin: -1px 3px 0;
+  opacity: 1;
+}

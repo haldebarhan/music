@@ -24,7 +24,9 @@ export class StudioEnregistrementComponent implements OnInit {
 
   form = this.fb.group({
     titre: ['', Validators.required],
+    prix: ['', Validators.required],
     type: ['', Validators.required],
+    description: ['', Validators.required],
     ordinateur: ['', Validators.required],
     daw: ['', Validators.required],
     ia: ['', Validators.required],
@@ -61,15 +63,15 @@ export class StudioEnregistrementComponent implements OnInit {
       { id: '1', value: 'Enceinte Monotoring de Studio' },
       { id: '2', value: 'Caissons de Base Monitoring' },
       { id: '3', value: 'Carte Son' },
-      { id: '4', value: 'Boîte à Rythmes et Grooveboxe' },
+      { id: '4', value: 'Boite a Rythmes et Grooveboxe' },
       { id: '5', value: 'Controleurs Midi USB' },
       { id: '6', value: 'Sampleurs' },
       { id: '7', value: 'Interfaces Midi' },
-      { id: '8', value: 'Claviers Maîtres' },
+      { id: '8', value: 'Claviers Maitres' },
       { id: '9', value: 'Loopers' },
       { id: '10', value: 'Enregistreurs Numériques' },
-      { id: '11', value: 'Contrôleurs de Monitoring' },
-      { id: '12', value: 'Logiciels Création Musicale' },
+      { id: '11', value: 'Controleurs de Monitoring' },
+      { id: '12', value: 'Logiciels Creation Musicale' },
       { id: '13', value: 'Mobilier Home Studio' },
       { id: '14', value: 'Accessoires Home Studio' },
     ];
@@ -109,7 +111,6 @@ export class StudioEnregistrementComponent implements OnInit {
     }
     this.studioForm.emit(data);
     this.eventsSubscription = this.events.subscribe((value) => {
-      console.log(value);
       this.resetData();
       this.isPosted = false;
       this.resetData();
@@ -118,8 +119,10 @@ export class StudioEnregistrementComponent implements OnInit {
 
   private setData(data: FormData): void {
     data.append('type', <string>this.form.value.type);
+    data.append('description', <string>this.form.value.description);
     data.append('casque', <string>this.form.value.casque);
     data.append('ia', <string>this.form.value.ia);
+    data.append('prix', <string>this.form.value.prix);
     data.append('filtre', <string>this.form.value.filtre);
     data.append('es', <string>this.form.value.es);
     data.append('pm', <string>this.form.value.pm);

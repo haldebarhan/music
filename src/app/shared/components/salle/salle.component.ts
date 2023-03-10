@@ -23,9 +23,11 @@ export class SalleComponent implements OnInit {
   divers: Array<any> = [];
   form = this.fb.group({
     titre: ['', Validators.required],
+    description: ['', Validators.required],
     nbPlace: ['', Validators.required],
     scene: ['', Validators.required],
     sono: ['', Validators.required],
+    prix: ['', Validators.required],
     loge: ['', Validators.required],
     plateau: ['', Validators.required],
     video: ['', Validators.required],
@@ -53,7 +55,9 @@ export class SalleComponent implements OnInit {
 
   setData(data: FormData): void {
     data.append('titre', <string>this.form.value.titre);
+    data.append('description', <string>this.form.value.description);
     data.append('accesSalle', <string>this.form.value.accesSalle);
+    data.append('prix', <string>this.form.value.accesSalle);
     data.append('nbPlace', <string>this.form.value.nbPlace);
     data.append('scene', <string>this.form.value.scene);
     data.append('sono', <string>this.form.value.sono);
@@ -78,7 +82,6 @@ export class SalleComponent implements OnInit {
     }
     this.salleSpecForm.emit(data);
     this.eventsSubscription = this.events.subscribe((value) => {
-      console.log(value);
       this.resetData();
       this.isPosted = false;
     });

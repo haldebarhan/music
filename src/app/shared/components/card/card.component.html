@@ -1,0 +1,130 @@
+<div class="card-grid-2 hover-up" *ngIf="MusicToolDesc">
+    <div class="card-grid-2-image-left"><span class="flash"></span>
+        <div class="image-box"><img src="assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+        <div class="right-info"><a class="name-job" href="company-details.html">LinkedIn</a><span
+                class="location-small">{{MusicToolDesc.categorie}}</span></div>
+    </div>
+    <div class="card-block-info">
+        <h6><a href="job-details.html">{{MusicToolDesc.titre}}</a></h6>
+        <div class="mt-5"><span class="card-briefcase">{{MusicToolDesc.type}}</span>
+            <span class="card-time">{{renderTime(MusicToolDesc.createdAt)}}</span>
+        </div>
+        <p class="font-sm color-text-paragraph mt-15">{{item.description[0].description}}</p>
+        <div class="mt-30" *ngIf="check(MusicToolDesc.description[0].instrument)">
+            <a *ngFor="let i of MusicToolDesc.description[0].instrument" class="btn btn-grey-small mr-5"
+                href="jobs-grid.html">{{i}}</a>
+        </div>
+        <div class="mt-30" *ngIf="!check(MusicToolDesc.description[0].instrument)">
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{MusicToolDesc.description[0].instrument}}</a>
+        </div>
+        <div class="card-2-bottom mt-30">
+            <div class="row">
+                <div class="col-lg-7 col-7">
+                    <span class="card-text-price">{{MusicToolDesc.description[0].prix | priceTag}}</span>
+                    <span class="text-muted">/Jour</span>
+                </div>
+                <div class="col-lg-5 col-5 text-end">
+                    <a [routerLink]="['publication', MusicToolDesc._id]">
+                        <div class="btn btn-apply-now" data-bs-toggle="modal">
+                            Details</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-grid-2 hover-up" *ngIf="recordingDesc">
+    <div class="card-grid-2-image-left"><span class="flash"></span>
+        <div class="image-box"><img src="assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+        <div class="right-info"><a class="name-job" href="company-details.html">{{recordingDesc.titre}}</a><span
+                class="location-small">{{recordingDesc.categorie}}</span></div>
+    </div>
+    <div class="card-block-info">
+        <h6><a href="job-details.html">{{recordingDesc.titre}}</a></h6>
+        <div class="mt-5"><span class="card-briefcase">Fulltime</span>
+            <span class="card-time">{{renderTime(item.createdAt)}}</span>
+        </div>
+        <p class="font-sm color-text-paragraph mt-15"></p>
+        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="jobs-grid.html">Adobe XD</a><a
+                class="btn btn-grey-small mr-5" href="jobs-grid.html">TT</a><a class="btn btn-grey-small mr-5"
+                href="jobs-grid.html">Photoshop</a>
+        </div>
+        <div class="card-2-bottom mt-30">
+            <div class="row">
+                <div class="col-lg-7 col-7"><span class="card-text-price">$500</span><span
+                        class="text-muted">/Hour</span></div>
+                <div class="col-lg-5 col-5 text-end">
+                    <a [routerLink]="['publication', recordingDesc._id]">
+                        <div class="btn btn-apply-now">
+                            Details</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-grid-2 hover-up" *ngIf="reheasalDesc">
+    <div class="card-grid-2-image-left"><span class="flash"></span>
+        <div class="image-box"><img src="assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+        <div class="right-info"><a class="name-job" href="company-details.html">{{item.categorie}}</a><span
+                class="location-small">Location</span></div>
+    </div>
+    <div class="card-block-info">
+        <h6><a href="job-details.html">{{reheasalDesc.titre}}</a></h6>
+        <div class="mt-5"><span class="card-briefcase">Fulltime</span>
+            <span class="card-time">{{renderTime(reheasalDesc.createdAt)}}</span>
+        </div>
+        <p class="font-sm color-text-paragraph mt-15">{{reheasalDesc.description[0].description}}</p>
+        <div class="mt-30">
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{reheasalDesc.description[0].nbPlace}}</a>
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{reheasalDesc.description[0].scene}}</a>
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{reheasalDesc.description[0].plateau}}</a>
+        </div>
+        <div class="card-2-bottom mt-30">
+            <div class="row">
+                <div class="col-lg-7 col-7"><span class="card-text-price">{{reheasalDesc.description[0].prix
+                        |priceTag}}</span><span class="text-muted">/Jour</span></div>
+                <div class="col-lg-5 col-5 text-end">
+                    <a [routerLink]="['publication', reheasalDesc._id]">
+                        <div class="btn btn-apply-now">
+                            Details</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card-grid-2 hover-up" *ngIf="theaterDesc">
+    <div class="card-grid-2-image-left"><span class="flash"></span>
+        <div class="image-box"><img src="assets/imgs/brands/brand-1.png" alt="jobBox"></div>
+        <div class="right-info"><a class="name-job" href="company-details.html">{{item.categorie}}</a><span
+                class="location-small">Location</span></div>
+    </div>
+    <div class="card-block-info">
+        <h6><a href="job-details.html">{{item.titre}}</a></h6>
+        <div class="mt-5"><span class="card-briefcase">Fulltime</span>
+            <span class="card-time">{{renderTime(item.createdAt)}}</span>
+        </div>
+        <p class="font-sm color-text-paragraph mt-15">{{theaterDesc.description[0].description}}</p>
+        <div class="mt-30">
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{theaterDesc.description[0].materiel_Son}}</a>
+            <a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{theaterDesc.description[0].materiel_Scene}}</a><a
+                class="btn btn-grey-small mr-5" href="jobs-grid.html">{{theaterDesc.description[0].materiel_Lumiere}}</a>
+        </div>
+        <div class="card-2-bottom mt-30">
+            <div class="row">
+                <div class="col-lg-7 col-7"><span class="card-text-price">{{theaterDesc.description[0].prix | priceTag}}</span><span
+                        class="text-muted">/Jour</span></div>
+                <div class="col-lg-5 col-5 text-end">
+                    <a [routerLink]="['publication', theaterDesc._id]">
+                        <div class="btn btn-apply-now">
+                            Details</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

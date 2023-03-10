@@ -34,6 +34,7 @@ export class SalleRepetitionComponent implements OnInit {
     materielLumiere: ['', Validators.required],
     materielScene: ['', Validators.required],
     titre: ['', Validators.required],
+    prix: ['', Validators.required],
   });
   divers: Array<any> = [];
   diversForm = this.fb.group({
@@ -62,18 +63,18 @@ export class SalleRepetitionComponent implements OnInit {
     }
     this.salleRep.emit(data);
     this.eventsSubscription = this.events.subscribe((value) => {
-      console.log(value);
       this.resetData();
       this.isPosted = false;
     });
   }
 
   setData(data: FormData): void {
-    data.append('materielSon', <string>this.form.value.materielSon);
-    data.append('materielScene', <string>this.form.value.materielScene);
-    data.append('materielLumiere', <string>this.form.value.materielLumiere);
+    data.append('materiel_Son', <string>this.form.value.materielSon);
+    data.append('materiel_Scene', <string>this.form.value.materielScene);
+    data.append('materiel_Lumiere', <string>this.form.value.materielLumiere);
     data.append('description', <string>this.form.value.description);
     data.append('titre', <string>this.form.value.titre);
+    data.append('prix', <string>this.form.value.prix);
     if (this.divers && this.divers.length > 0) {
       for (let item of this.divers) {
         data.append('autreMateriel', <string>item);

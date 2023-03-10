@@ -1,0 +1,12 @@
+.banner-hero.banner-image-single img {
+  width: 100%;
+  border-radius: 16px;
+  background-size: cover;
+}
+
+.cover img {
+  background-attachment: fixed;
+  background-size: cover;
+  height: 100px;
+  width: 100px;
+}
