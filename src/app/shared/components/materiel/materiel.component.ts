@@ -59,7 +59,6 @@ export class MaterielComponent implements OnInit {
     if (this.images && this.images.length > 0) {
       appendImages(this.images, this.image, data);
     }
-    console.log(this.form.value, this.selectedTools);
     this.Instrus.emit(data);
     this.eventsSubscription = this.events.subscribe((value) => {
       this.resetData();

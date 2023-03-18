@@ -45,15 +45,15 @@
         <div class="mt-5"><span class="card-briefcase">Fulltime</span>
             <span class="card-time">{{renderTime(item.createdAt)}}</span>
         </div>
-        <p class="font-sm color-text-paragraph mt-15"></p>
-        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="jobs-grid.html">Adobe XD</a><a
-                class="btn btn-grey-small mr-5" href="jobs-grid.html">TT</a><a class="btn btn-grey-small mr-5"
-                href="jobs-grid.html">Photoshop</a>
+        <p class="font-sm color-text-paragraph mt-15">{{recordingDesc.description[0].description}}</p>
+        <div class="mt-30"><a class="btn btn-grey-small mr-5" href="jobs-grid.html">{{recordingDesc.description[0].daw}}</a><a
+                class="btn btn-grey-small mr-5" href="jobs-grid.html">{{recordingDesc.description[0].filtre}}</a><a class="btn btn-grey-small mr-5"
+                href="jobs-grid.html">{{recordingDesc.description[0].ordinateur}}</a>
         </div>
         <div class="card-2-bottom mt-30">
             <div class="row">
-                <div class="col-lg-7 col-7"><span class="card-text-price">$500</span><span
-                        class="text-muted">/Hour</span></div>
+                <div class="col-lg-7 col-7"><span class="card-text-price">{{recordingDesc.description[0].prix}}</span><span
+                        class="text-muted">/Jour</span></div>
                 <div class="col-lg-5 col-5 text-end">
                     <a [routerLink]="['publication', recordingDesc._id]">
                         <div class="btn btn-apply-now">

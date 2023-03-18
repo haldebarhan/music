@@ -18,7 +18,7 @@ export class CardComponent implements OnInit {
   ngOnInit(): void {
     this.Init();
     this.initTime();
-    console.log(this.theaterDesc);
+    console.log(this.recordingDesc);
   }
 
   private Init() {

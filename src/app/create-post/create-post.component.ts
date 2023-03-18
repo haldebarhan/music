@@ -30,7 +30,7 @@ export class CreatePostComponent implements OnInit {
   });
   cible = '';
   type_recherche = '';
-  user = 'Professionnel'
+  user = 'Professionnel';
 
   ngOnInit(): void {
     this.getCategories();
@@ -61,8 +61,8 @@ export class CreatePostComponent implements OnInit {
       { id: 'SE', nom: "Studio d'Enregistrement" },
       { id: 'LVIM', nom: "Location / Vente d'Instruments de Musique" },
     ];
-    if (this.user == 'Professionnel'){
-      options.push({id: 'PS', nom: 'Prestation de Service'})
+    if (this.user == 'Professionnel') {
+      options.push({ id: 'PS', nom: 'Prestation de Service' });
     }
     return options;
   }
@@ -106,8 +106,10 @@ export class CreatePostComponent implements OnInit {
   createAd(valeur: any) {
     const data = <FormData>valeur;
     data.append('categorie', this.getTitle(this.cible));
-    this.homeService.createAd('1', data).subscribe((res) => {
-      this.emitToChild(res);
+    this.homeService.createAd(this.authService.user.value._id, data).subscribe({
+      next: (response) => {
+        this.emitToChild(response);
+      },
     });
   }
 
